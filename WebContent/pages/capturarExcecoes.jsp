@@ -16,7 +16,16 @@
 
 	<script type="text/javascript">
 		function testarExcecao(){
-			alert($('#txtValor').val());
+			valorInformado = $('#txtValor').val();
+			
+			$.ajax({
+				method: "POST";
+				url: "capturarExcecao";
+				data: { valorParam: valorInformado }
+			})
+			  .always(function(response) {
+				alert(response);  
+			  });
 		}
 	</script>
 
