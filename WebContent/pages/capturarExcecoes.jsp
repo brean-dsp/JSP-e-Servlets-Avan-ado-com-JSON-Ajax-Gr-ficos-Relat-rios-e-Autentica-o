@@ -16,15 +16,18 @@
 
 	<script type="text/javascript">
 		function testarExcecao(){
-			valorInformado = $('#txtValor').val();
+		 valorInformado = $('#txtValor').val();
 			
 			$.ajax({
-				method: "POST";
-				url: "capturarExcecao";
+				method: "POST",
+				url: "capturarExcecao", // Indica o caminho da servlet
 				data: { valorParam: valorInformado }
 			})
-			  .always(function(response) {
-				alert(response);  
+			  .done(function(response) {
+				alert("Scuesso " + response);  
+			  })
+			  .fail(function(xhr, status, errorThrown) { // pode usar cada um desses parametros para visualizar o erro
+				alert("Erro: " + response);  
 			  });
 		}
 	</script>
